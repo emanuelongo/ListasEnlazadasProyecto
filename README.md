@@ -15,7 +15,7 @@ Tarifa diaria de alquiler.
 La implementación debe utilizar listas enlazadas que almacenarán objetos de la clase Libro.
 Cada nodo de la lista debe representar un libro. El sistema debe permitir realizar las
 siguientes operaciones
-● Agregar un libro, debe ser posible agregar nuevos libros.se debe permitir registrar un
+●Agregar un libro, debe ser posible agregar nuevos libros.se debe permitir registrar un
 nuevo libro con todos sus atributos.
 ● Eliminar un libro, debe permitir la opción de eliminar libros.
 ● Buscar todos los libros por género, debe retornar cuantos libros se tienen, la
