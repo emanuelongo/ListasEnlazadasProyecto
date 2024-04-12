@@ -1,6 +1,6 @@
 class Libro:
     
-    def __init__(self, numeroLibro: str, genero: str, autor: str, titulo: str, añoPublicacion: int, tarifaAlquiler):
+    def __init__(self, numeroLibro: str, genero: str, autor: str, titulo: str, añoPublicacion: int, tarifaAlquiler: int):
         self.numeroLibro = numeroLibro
         self.genero = genero
         self.autor = autor
