@@ -3,6 +3,8 @@ from Libro import Libro
 from Buscador import Buscador
 from Enlistar import Listados
 from Alquiler import Alquiler
+from FuncionesBiblioteca import FuncionalidadesBiblioteca
+from Devolucion import Devolucion
 
 class Menu:
     def __init__(self):
@@ -46,6 +48,8 @@ class Menu:
         print("11. Alquilar libro por su género.")
         print("12. Alquilar libro.")
         print("13. Devolver libro.")
+        print("14. Ingresos totales por alquileres de libros hasta el momento.")
+        print("15. Intercambiar un libro deteriorado por un libro nuevo.")
         seleccionarOpcion: int = int(input("\nIngresa tu opción: "))
 
         if seleccionarOpcion == 1:
@@ -74,76 +78,25 @@ class Menu:
             self.opcionSeleccionada12()
         elif seleccionarOpcion == 13:
             self.opcionSeleccionada13()
+        elif seleccionarOpcion == 14:
+            self.opcionSeleccionada14()
+        elif seleccionarOpcion == 15:
+            self.opcionSeleccionada15()
         else:
             print("\nIngresa una opción válida\n")
             self.mostrarOpcionesBibliotecaIniciada()
 
     def opcionSeleccionada1(self):
         print("\n================= Ingresemos el libro =================")
-        numeroLibro: str = input("Ingresa el número del libro: ")
-        genero: str = input("Ingresa el género del libro: ")
-        autor: str = input("Ingresa el autor del libro: ")
-        titulo: str = input("Ingresa el título del libro: ")
-        añoPublicacion: int = int(input("Ingresa el año de publicación del libro: "))
-        tarifaAlquiler: int = int(input("Ingresa la tarifa del alquiler del libro: "))
-        
-        if self.biblioteca.head == None:
-            libro = Libro(numeroLibro, genero, autor, titulo, añoPublicacion, tarifaAlquiler)
-            self.librosParaAlquilar.append(libro)
-            print(self.biblioteca.append(libro))
-        elif self.biblioteca.head != None:
-            iteracionesBiblioteca = 0
-            for elementoBiblioteca in self.biblioteca:
-                iteracionesBiblioteca += 1
-                if  elementoBiblioteca.value.numeroLibro == numeroLibro:
-                    print("\nEl número del libro ya existe en la biblioteca.")
-                    print("Ingrese un número diferente para el libro.")
-                    self.opcionSeleccionada1()
-                    break
-                elif elementoBiblioteca.value.numeroLibro != numeroLibro and self.biblioteca.length > iteracionesBiblioteca:
-                    pass
-                elif elementoBiblioteca.value.numeroLibro != numeroLibro and self.biblioteca.length == iteracionesBiblioteca:
-                    libro = Libro(numeroLibro, genero, autor, titulo, añoPublicacion, tarifaAlquiler)
-                    self.librosParaAlquilar.append(libro)
-                    print(self.biblioteca.append(libro))
-                    break
+        funcionesBiblioteca = FuncionalidadesBiblioteca(self.librosParaAlquilar, self.biblioteca)
+        funcionesBiblioteca.agregarLibro()
 
     def opcionSeleccionada2(self):
         print("\n================= Eliminemos el libro =================")
         numeroLibro: str = input("Ingresa el número del libro que quieres eliminar: ")
-        
-        iteracionesBiblioteca = 0
-        for elementoBiblioteca in self.biblioteca:
 
-            iteracionesBiblioteca += 1
-            if elementoBiblioteca.value.numeroLibro == numeroLibro:
-
-                if self.librosParaAlquilar.length > 0:
-
-                    iteracionesParaAlquilar = 0
-                    for elementoParaAlquilar in self.librosParaAlquilar:
-
-                        iteracionesParaAlquilar += 1
-                        if elementoParaAlquilar.value.numeroLibro == numeroLibro:
-                            print(self.biblioteca.remove(iteracionesBiblioteca - 1))
-                            self.librosParaAlquilar.remove(iteracionesParaAlquilar - 1)
-
-                        elif elementoParaAlquilar.value.numeroLibro != numeroLibro and self.librosParaAlquilar.length > iteracionesParaAlquilar:
-                            pass
-
-                        elif  elementoParaAlquilar.value.numeroLibro != numeroLibro and self.librosParaAlquilar.length == iteracionesParaAlquilar:
-                            print(f"\nEl libro con número {numeroLibro} se encuentra alquilado, debe devolverse para poderse eliminar.")
-
-                else:
-                    print(f"\nEl libro con número {numeroLibro} se encuentra alquilado, debe devolverse para poderse eliminar.")
-                break 
-
-            elif elementoBiblioteca.value.numeroLibro != numeroLibro and self.biblioteca.length > iteracionesBiblioteca:
-                pass
-
-            elif elementoBiblioteca.value.numeroLibro != numeroLibro and self.biblioteca.length == iteracionesBiblioteca:
-                print("\nEse libro no existe en la biblioteca.\n")
-                break
+        funcionesBiblioteca = FuncionalidadesBiblioteca(self.librosParaAlquilar, self.biblioteca)
+        funcionesBiblioteca.eliminarLibro(numeroLibro)
     
     def opcionSeleccionada3(self):
         print("\n================= Busquemos el libro =================")
@@ -202,13 +155,35 @@ class Menu:
             alquiler.alquilarLibroPorGenero(generoLibro)
 
         else:
-            print("No hay libros para alquilar")
+            print(f"\nNo hay libros para alquilar con el género {generoLibro}")
 
 
     def opcionSeleccionada12(self):
-        pass
+        print("\n================= Alquilemos un libro =================")
+        numeroLibro: str = input("Ingesa el número del libro: ")
+
+        if self.librosParaAlquilar.length > 0:
+            alquiler = Alquiler(self.librosParaAlquilar, self.librosAlquilados)
+            alquiler.alquilarLibro(numeroLibro)
+
+        else:
+            print(f"\nNo hay un libro para alquilar con el número de libro: {numeroLibro}")
 
     def opcionSeleccionada13(self):
+        print("\n================= Devolvamos un libro =================")
+        numeroLibro: str = input("Ingesa el número del libro: ")
+
+        if self.librosAlquilados.length > 0:
+            devolver = Devolucion(self.librosParaAlquilar, self.librosAlquilados, self.biblioteca)
+            devolver.devolverLibro(numeroLibro)
+
+        else:
+            print(f"\nNo hay un libro para devolver con el número de libro: {numeroLibro}")
+    
+    def opcionSeleccionada14(self):
+        pass
+
+    def opcionSeleccionada15(self):
         pass
 
 menu = Menu()

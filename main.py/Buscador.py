@@ -23,19 +23,19 @@ class Buscador:
 
                         if elementoParaAlquilar.value.genero == generoLibro:
                             cantidadUnidadesDisponiblesPorGenero += 1
-                            print("\n===================== Libro =====================\n")  
-                            print(f"Número del libro: {elementoParaAlquilar.value.numeroLibro}")
-                            print(f"Género del libro: {elementoParaAlquilar.value.genero}")
-                            print(f"Autor del libro: {elementoParaAlquilar.value.autor}")
-                            print(f"Título del libro: {elementoParaAlquilar.value.titulo}")
-                            print(f"Año de publicación del libro: {elementoParaAlquilar.value.añoPublicacion}")
-                            print(f"Tarifa de alquiler del libro: {elementoParaAlquilar.value.tarifaAlquiler}")
 
                         else:
                             pass
 
                 else:
                         cantidadUnidadesDisponiblesPorGenero += 0
+                print("\n===================== Libro =====================\n")  
+                print(f"Número del libro: {elemento.value.numeroLibro}")
+                print(f"Género del libro: {elemento.value.genero}")
+                print(f"Autor del libro: {elemento.value.autor}")
+                print(f"Título del libro: {elemento.value.titulo}")
+                print(f"Año de publicación del libro: {elemento.value.añoPublicacion}")
+                print(f"Tarifa de alquiler del libro: {elemento.value.tarifaAlquiler}")
             
             else:
                 pass
@@ -56,6 +56,7 @@ class Buscador:
                         iteracionesParaAlquiler += 1
                         if elementoParaAlquilar.value.titulo == tituloLibro:
                             print(f"\nEl libro que tiene por título '{tituloLibro}' SÍ está disponible para alquilar.")
+                            break
 
                         elif elementoParaAlquilar.value.titulo != tituloLibro and self.librosParaAlquilar.length > iteracionesParaAlquiler:
                             pass
@@ -88,6 +89,7 @@ class Buscador:
                         iteracionesParaAlquiler += 1
                         if elementoParaAlquilar.value.autor == autorLibro:
                             print(f"\nEl libro que tiene por autor '{autorLibro}' SÍ está disponible para alquilar.")
+                            break
 
                         elif elementoParaAlquilar.value.autor != autorLibro and self.librosParaAlquilar.length > iteracionesParaAlquiler:
                             pass
@@ -120,6 +122,7 @@ class Buscador:
                         iteracionesParaAlquiler += 1
                         if elementoParaAlquilar.value.añoPublicacion == añoPublicacion:
                             print(f"\nEl libro publicado en el año '{añoPublicacion}' SÍ está disponible para alquilar.")
+                            break
 
                         elif elementoParaAlquilar.value.añoPublicacion != añoPublicacion and self.librosParaAlquilar.length > iteracionesParaAlquiler:
                             pass

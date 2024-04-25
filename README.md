@@ -66,7 +66,7 @@ enlazada.
 ● Devolver un libro, Los usuarios también deben poder registrar la devolución de un
 libro alquilado.
 
-● Se debe otorgar un dcto del 10% x libro, si el mismo usuario alquila 2 o más libros.
+● Se debe otorgar un dcto del 10% x libro, si el mismo usuario alquila 2 o más libros. #DEBO RECORDAR DEVOLVER LA TUPLA DONDE PIDO LA CANTIDAD DE LIBROS
 
 ● Se debe retornar el ingreso total obtenido por alquileres de libros hasta el momento.
 

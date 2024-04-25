@@ -51,8 +51,33 @@ class Alquiler:
             print("\nNo puedes alquilar un libro por ese género en este momento.")
 
 
-    def alquilarLibro(self):
-        pass
+    def alquilarLibro(self, numeroLibro: str):
+
+        iteracionesLibrosParaAlquilar = 0
+        for elemento in self.librosParaAlquilar:
+
+            iteracionesLibrosParaAlquilar += 1
+            if elemento.value.numeroLibro == numeroLibro:
+                libroObtenidoDeDisponiblesParaALquilar = self.librosParaAlquilar.get(iteracionesLibrosParaAlquilar - 1).value
+                self.librosAlquilados.append(libroObtenidoDeDisponiblesParaALquilar)
+                self.librosParaAlquilar.remove(iteracionesLibrosParaAlquilar - 1)
+
+                print("\n===================== Libro alquilado =====================\n")  
+                print(f"Número del libro: {elemento.value.numeroLibro}")
+                print(f"Género del libro: {elemento.value.genero}")
+                print(f"Autor del libro: {elemento.value.autor}")
+                print(f"Título del libro: {elemento.value.titulo}")
+                print(f"Año de publicación del libro: {elemento.value.añoPublicacion}")
+                print(f"Tarifa de alquiler del libro: {elemento.value.tarifaAlquiler}")
+
+            elif elemento.value.numeroLibro != numeroLibro and self.librosParaAlquilar.length > iteracionesLibrosParaAlquilar:
+                pass
+
+            elif elemento.value.numeroLibro != numeroLibro and self.librosParaAlquilar.length == iteracionesLibrosParaAlquilar:
+                print(f"\nEl libro con número de libro {numeroLibro} no está disponible para alquilar.")
+                print("\nIngresa el número de un libro disponible.\n")
+                break 
+
 
 
     def saberCantidadDeLibrosParaLlevar(self, cantidadUnidadesDisponiblesPorGenero, generoLibro) -> int:
