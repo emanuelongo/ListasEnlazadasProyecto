@@ -53,7 +53,7 @@ class FuncionalidadesBiblioteca:
                         if elementoParaAlquilar.value.numeroLibro == numeroLibro:
                             print(self.biblioteca.remove(iteracionesBiblioteca - 1))
                             self.librosParaAlquilar.remove(iteracionesParaAlquilar - 1)
-                            break #PUEDE QUE ACÁ NO SE ME ELMINE EL OTRO LIBRO POR GÉNERO
+                            break 
 
                         elif elementoParaAlquilar.value.numeroLibro != numeroLibro and self.librosParaAlquilar.length > iteracionesParaAlquilar:
                             pass

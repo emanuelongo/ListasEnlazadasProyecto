@@ -1,4 +1,5 @@
 from Biblioteca import Biblioteca
+
 class Listados:
 
     def __init__(self, librosParaAlquilar: Biblioteca, librosAlquilados: Biblioteca):

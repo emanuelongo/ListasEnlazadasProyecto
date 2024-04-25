@@ -11,6 +11,8 @@ class Menu:
         self.biblioteca = Biblioteca()
         self.librosParaAlquilar = Biblioteca()
         self.librosAlquilados = Biblioteca()
+        self.historialLibrosAlquilados = Biblioteca()
+
         self.mostrarMenu()
         self.cantidadDeLibrosAlquilados = 0 #LE ASIGNARÉ EL VALOR QUE SE DEVUELVA EN LA TUPLA QUE RETORNA alquiler
 

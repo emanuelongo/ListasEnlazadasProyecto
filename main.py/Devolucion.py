@@ -26,6 +26,7 @@ class Devolucion:
                 print(f"Título del libro: {elemento.value.titulo}")
                 print(f"Año de publicación del libro: {elemento.value.añoPublicacion}")
                 print(f"Tarifa de alquiler del libro: {elemento.value.tarifaAlquiler}")
+                break
 
             elif elemento.value.numeroLibro != numeroLibro and self.librosAlquilados.length > iteracionesLibrosAlquilados:
                 pass

@@ -2,9 +2,10 @@ from Biblioteca import Biblioteca
 
 class Alquiler:
     
-    def __init__(self, librosParaAlquilar: Biblioteca, librosAlquilados: Biblioteca):
+    def __init__(self, librosParaAlquilar: Biblioteca, librosAlquilados: Biblioteca, historialLibrosAlquilados: Biblioteca):
         self.librosParaAlquilar = librosParaAlquilar
         self.librosAlquilados = librosAlquilados
+        self.historialLibrosAlquilados = historialLibrosAlquilados
         
 
     def alquilarLibroPorGenero(self, generoLibro: str):
@@ -59,6 +60,8 @@ class Alquiler:
             iteracionesLibrosParaAlquilar += 1
             if elemento.value.numeroLibro == numeroLibro:
                 libroObtenidoDeDisponiblesParaALquilar = self.librosParaAlquilar.get(iteracionesLibrosParaAlquilar - 1).value
+                
+                self.historialLibrosAlquilados.append(libroObtenidoDeDisponiblesParaALquilar)
                 self.librosAlquilados.append(libroObtenidoDeDisponiblesParaALquilar)
                 self.librosParaAlquilar.remove(iteracionesLibrosParaAlquilar - 1)
 
@@ -109,6 +112,7 @@ class Alquiler:
             iteraciones += 1
             if elemento.value.numeroLibro == numeroLibroParaAlquilar and elemento.value.genero == generoLibro:
                 libroObtenidoDeDisponiblesParaALquilar = self.librosParaAlquilar.get(iteraciones - 1).value
+                self.historialLibrosAlquilados.append(libroObtenidoDeDisponiblesParaALquilar)
                 self.librosAlquilados.append(libroObtenidoDeDisponiblesParaALquilar)
                 self.librosParaAlquilar.remove(iteraciones - 1)
                 
