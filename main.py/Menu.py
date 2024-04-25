@@ -5,6 +5,8 @@ from Enlistar import Listados
 from Alquiler import Alquiler
 from FuncionesBiblioteca import FuncionalidadesBiblioteca
 from Devolucion import Devolucion
+from Finanzas import Finanzas
+from Intercambio import Intercambio
 
 class Menu:
     def __init__(self):
@@ -14,7 +16,7 @@ class Menu:
         self.historialLibrosAlquilados = Biblioteca()
 
         self.mostrarMenu()
-        self.cantidadDeLibrosAlquilados = 0 #LE ASIGNARÉ EL VALOR QUE SE DEVUELVA EN LA TUPLA QUE RETORNA alquiler
+        
 
     def mostrarMenu(self):
         print("\n====================================================")
@@ -28,10 +30,13 @@ class Menu:
 
     def mostrarOpcionesBibliotecaVacia(self):    
         print("1. Agregar un libro.")
-        seleccionarOpcion: int = int(input("Ingresa tu opción: "))
+        print("2. Ingresos totales por alquileres de libros hasta el momento.")
+        seleccionarOpcion: int = int(input("\nIngresa tu opción: "))
     
         if seleccionarOpcion == 1:
             self.opcionSeleccionada1()
+        elif seleccionarOpcion == 2:
+            self.opcionSeleccionada14()
         else:
             print("\nIngresa una opción válida.\n")
             self.mostrarOpcionesBibliotecaVacia()
@@ -153,7 +158,7 @@ class Menu:
         generoLibro: str = input("Ingesa el género del libro: ")
 
         if self.librosParaAlquilar.length > 0:
-            alquiler = Alquiler(self.librosParaAlquilar, self.librosAlquilados)
+            alquiler = Alquiler(self.librosParaAlquilar, self.librosAlquilados, self.historialLibrosAlquilados)
             alquiler.alquilarLibroPorGenero(generoLibro)
 
         else:
@@ -165,7 +170,7 @@ class Menu:
         numeroLibro: str = input("Ingesa el número del libro: ")
 
         if self.librosParaAlquilar.length > 0:
-            alquiler = Alquiler(self.librosParaAlquilar, self.librosAlquilados)
+            alquiler = Alquiler(self.librosParaAlquilar, self.librosAlquilados, self.historialLibrosAlquilados)
             alquiler.alquilarLibro(numeroLibro)
 
         else:
@@ -183,10 +188,22 @@ class Menu:
             print(f"\nNo hay un libro para devolver con el número de libro: {numeroLibro}")
     
     def opcionSeleccionada14(self):
-        pass
+        print("\n================= Finanzas de la biblioteca =================")
+        
+        if self.historialLibrosAlquilados.length > 0:
+            finanzasBiblioteca = Finanzas(self.historialLibrosAlquilados)
+            print(f"Los ingresos totales de la biblioteca son: {finanzasBiblioteca.calcularIngresosTotalesPorAlquileres()}")
+        
+        else:
+            print("No se han alquilado libros.")
+            print("\nIngresos totales hasta el momento: 0")
 
     def opcionSeleccionada15(self):
-        pass
+        print("\n================= Intercambiemos un libro deteriorado =================")
+        numeroLibro: str = input("Ingesa el número del libro deteriorado: ")
+
+        intercambio = Intercambio(self.librosParaAlquilar, self.librosAlquilados, self.biblioteca)
+        intercambio.saberLibroDeteriorado(numeroLibro)
 
 menu = Menu()
 menu
