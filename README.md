@@ -34,7 +34,7 @@ nuevo libro con todos sus atributos.
 información de cada uno y adicionalmente si está o no disponible para el alquiler
 
 ● Buscar un libro por título, debe retornar si se tiene el libro en la biblioteca y
-adicionalmente si está o no disponible para el alquiler
+adicionalmente si está o no disponible para el alquiler 
 
 ● Buscar un libro por autor, debe retornar si se tiene el libro en la biblioteca y
 adicionalmente si está o no disponible para el alquiler

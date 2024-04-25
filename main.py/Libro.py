@@ -7,5 +7,3 @@ class Libro:
         self.titulo = titulo
         self.añoPublicacion = añoPublicacion
         self.tarifaAlquiler = tarifaAlquiler
-    
-
