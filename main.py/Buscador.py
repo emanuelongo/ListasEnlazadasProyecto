@@ -17,18 +17,6 @@ class Buscador:
             if elemento.value.genero == generoLibro:
                 cantidadUnidadesEnBiblioteca += 1
 
-                if self.librosParaAlquilar.length > 0:
-
-                    for elementoParaAlquilar in self.librosParaAlquilar:
-
-                        if elementoParaAlquilar.value.genero == generoLibro:
-                            cantidadUnidadesDisponiblesPorGenero += 1
-
-                        else:
-                            pass
-
-                else:
-                        cantidadUnidadesDisponiblesPorGenero += 0
                 print("\n===================== Libro =====================\n")  
                 print(f"Número del libro: {elemento.value.numeroLibro}")
                 print(f"Género del libro: {elemento.value.genero}")
@@ -39,6 +27,17 @@ class Buscador:
             
             else:
                 pass
+
+        if self.librosParaAlquilar.length > 0:
+            for elementoParaAlquilar in self.librosParaAlquilar:
+                if elementoParaAlquilar.value.genero == generoLibro:
+                    cantidadUnidadesDisponiblesPorGenero += 1
+
+                else:
+                    pass
+
+        else:
+            cantidadUnidadesDisponiblesPorGenero += 0
             
         print(f"\nPara el género {generoLibro}, {cantidadUnidadesEnBiblioteca} unidad(es) hace(n) parte de la biblioteca  y {cantidadUnidadesDisponiblesPorGenero} unidad(es) está(n) disponible(s) para alquilar.")
 

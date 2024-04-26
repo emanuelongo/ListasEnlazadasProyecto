@@ -16,9 +16,9 @@ class FuncionalidadesBiblioteca:
         tarifaAlquiler: int = int(input("Ingresa la tarifa del alquiler del libro: "))
         
         if self.biblioteca.head == None:
-            libro = Libro(numeroLibro, genero, autor, titulo, añoPublicacion, tarifaAlquiler)
-            self.librosParaAlquilar.append(libro)
-            print(self.biblioteca.append(libro))
+            libro1 = Libro(numeroLibro, genero, autor, titulo, añoPublicacion, tarifaAlquiler)
+            self.librosParaAlquilar.append(libro1)
+            print(self.biblioteca.append(libro1))
         elif self.biblioteca.head != None:
             iteracionesBiblioteca = 0
             for elementoBiblioteca in self.biblioteca:
@@ -31,9 +31,9 @@ class FuncionalidadesBiblioteca:
                 elif elementoBiblioteca.value.numeroLibro != numeroLibro and self.biblioteca.length > iteracionesBiblioteca:
                     pass
                 elif elementoBiblioteca.value.numeroLibro != numeroLibro and self.biblioteca.length == iteracionesBiblioteca:
-                    libro = Libro(numeroLibro, genero, autor, titulo, añoPublicacion, tarifaAlquiler)
-                    self.librosParaAlquilar.append(libro)
-                    print(self.biblioteca.append(libro))
+                    libro2 = Libro(numeroLibro, genero, autor, titulo, añoPublicacion, tarifaAlquiler)
+                    self.librosParaAlquilar.append(libro2)
+                    print(self.biblioteca.append(libro2))
                     break
                 
                 
